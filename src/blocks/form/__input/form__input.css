@@ -1,0 +1,23 @@
+.form__input {
+  border: none;
+  background-color: black;
+  border-bottom: 1px solid white;
+  padding: 0;
+  margin: 0;
+  height: 27px;
+  color: white;
+}
+
+.form__input::placeholder {
+  color: #ccc;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: black;
+}

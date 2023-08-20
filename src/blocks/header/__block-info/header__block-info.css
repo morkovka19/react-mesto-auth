@@ -1,0 +1,6 @@
+.header__block-info {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
