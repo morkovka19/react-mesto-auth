@@ -5,7 +5,7 @@ import closeIcon from "../images/icon/close-icon-min.svg";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function InfoTootip({ isOpen, success, onClose }) {
+export default function InfoTootip({ isOpen, success, onClose, text }) {
   const handleCloseOn = () => {
     onClose();
   };
@@ -24,11 +24,7 @@ export default function InfoTootip({ isOpen, success, onClose }) {
             className="info-tootip__img"
             src={success ? SuccessImage : NoSuccessImage}
           />
-          <p className="info-tootip__text">
-            {success
-              ? "Вы успешно зарегистрировались!"
-              : "Что-то пошло не так! Попробуйте ещё раз."}
-          </p>
+          <p className="info-tootip__text">{text}</p>
         </div>
       </div>
     </section>

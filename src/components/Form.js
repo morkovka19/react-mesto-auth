@@ -22,6 +22,7 @@ export default function Form({
           name="email"
           id="email"
           onChange={onChangeEmail}
+          required
         />
         <input
           className="form__input"
@@ -30,6 +31,7 @@ export default function Form({
           name="password"
           id="password"
           onChange={onChangePassword}
+          required
         />
       </fieldset>
       <button type="submit" className="form__submit">

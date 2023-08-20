@@ -40,6 +40,11 @@ export default function Register({ onSubmit, success }) {
         isOpen={isOpen}
         success={success}
         onClose={handleClosePopup}
+        text={
+          success
+            ? "Вы успешно зарегистрировались!"
+            : "Что-то пошло не так! Попробуйте ещё раз."
+        }
       />
       <Header buttonName={"Войти"} path="/sign-in" email={""} />
       <div className="register">
@@ -58,3 +63,7 @@ export default function Register({ onSubmit, success }) {
     </>
   );
 }
+
+/*{success
+  ? "Вы успешно зарегистрировались!"
+  : "Что-то пошло не так! Попробуйте ещё раз."}*/

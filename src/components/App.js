@@ -65,7 +65,7 @@ class App extends React.Component {
     this.setState({ selectedCard: card });
   };
 
-  componentDidMount() {
+  getIfnfoLoggedUser() {
     Promise.all([api.getUserInfo(), api.getInitialsCard()])
       .then(([userInfo, cards]) => {
         this.setState({
@@ -74,15 +74,22 @@ class App extends React.Component {
         });
       })
       .catch((err) => console.log(err));
+  }
+
+  componentDidMount() {
     if (localStorage.getItem("jwt")) {
       const token = localStorage.getItem("jwt");
-      auth.getValidToken(token).then((res) => {
-        this.setState({
-          token: token,
-          email: res.data.email,
-          loggedIn: true,
-        });
-      }).catch(err => console.log(err));
+      auth
+        .getValidToken(token)
+        .then((res) => {
+          this.setState({
+            token: token,
+            email: res.data.email,
+            loggedIn: true,
+          });
+          this.getIfnfoLoggedUser();
+        })
+        .catch((err) => console.log(err));
     }
   }
 
@@ -164,6 +171,7 @@ class App extends React.Component {
           token: jwt.token,
         });
         localStorage.setItem("jwt", jwt.token);
+        this.getIfnfoLoggedUser();
         return <Navigate to="/" replace />;
       })
       .catch((err) => {
@@ -240,6 +248,10 @@ class App extends React.Component {
                   success={this.state.registerSuccess}
                 />
               }
+            />
+            <Route
+              path="*"
+              element={!this.state.loggedIn && <Navigate to="/sign-in" />}
             />
           </Routes>
           <Footer loggedIn={this.state.loggedIn} />
